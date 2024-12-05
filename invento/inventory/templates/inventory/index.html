@@ -3,8 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Sign up</title>
 	{% load static %}
+	<style>
+		input[type="text"], input[type="password"] {
+			height: 2rem;
+			padding: 1rem;
+			width: 30rem;
+			border-radius: 100px;
+		}
+	</style>
 	<link rel="stylesheet" href="{% static 'inventory/output.css' %}">
 </head>
 <body>
@@ -19,7 +27,17 @@
 			</div>
 		</section>
 
-		<section class="bg-gradient-to-t w-3/5">signup</section>
+		<section class="bg-gradient-to-t w-3/5 flex items-center justify-center" >
+			<form action="" method ="post" class="flex items-center justify-center flex-col gap-5">
+				{% csrf_token %}
+				{{ form }}
+				{% if warning %}
+				<i class="text-red">{{ warning }}</i>
+				{% endif %}
+				<input class="border border-[#5A9D8D] text-[#5A9D8D] font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-[#5A9D8D] hover:text-white transition-all duration-150" 
+				type="submit" value="Sign up">
+			</form>
+		</section>
 	<!-- white #EFFCF8 -->
 	<!--green #5A9D8D -->
 	</main>
