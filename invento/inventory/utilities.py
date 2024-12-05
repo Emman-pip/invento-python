@@ -1,5 +1,5 @@
 import hashlib
 
 
-def sha256(input):
-    return hashlib.sha256(b"emman").hexdigest()
+def sha256(input: str):
+    return hashlib.sha256(input.encode("utf-8")).hexdigest()
