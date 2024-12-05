@@ -32,7 +32,7 @@
 				{% csrf_token %}
 				{{ form }}
 				{% if warning %}
-				<i class="text-red">{{ warning }}</i>
+					<i class="text-red">{{ warning }}</i>
 				{% endif %}
 				<input class="border border-[#5A9D8D] text-[#5A9D8D] font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-[#5A9D8D] hover:text-white transition-all duration-150" 
 				type="submit" value="Sign up">

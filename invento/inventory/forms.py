@@ -16,7 +16,7 @@ class SignUpForm(forms.Form):
             }
         ),
     )
-    email = forms.CharField(
+    email = forms.EmailField(
         label="",
         widget=forms.TextInput(
             attrs={
