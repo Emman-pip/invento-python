@@ -23,13 +23,14 @@
 				<p class="text-[#2D4E46]">JOIN US TODAY!</p>
 			</div>
 			<div class="h-full flex items-end">
-				<a href="" class="border border-white text-white font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-white hover:text-[#5A9D8D] transition-all duration-150">LOGIN</a>
+				<a class="border border-white text-white font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-white hover:text-[#5A9D8D] transition-all duration-150" href="login/">LOGIN</a>
 			</div>
 		</section>
 
 		<section class="bg-gradient-to-t w-3/5 flex items-center justify-center" >
 			<form action="" method ="post" class="flex items-center justify-center flex-col gap-5">
 				{% csrf_token %}
+				<h1 class="text-4xl text-[#5A9D8D] font-bold">SIGN UP</h1>
 				{{ form }}
 				{% if warning %}
 					<i class="text-red">{{ warning }}</i>

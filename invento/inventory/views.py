@@ -38,7 +38,18 @@ def index(request):
                         "warning": "please check all fields",
                     },
                 )
-            return HttpResponse(username + email + organization + password)
+
+            userData = {
+                "username": username,
+                "email": email,
+                "organization": organization,
+                "password": sha256(password),
+                "ownedInventories": [],
+            }
+
+            users.insert_one(userData)
+            # make this path to login
+            return login(None)
         else:
             return render(
                 request,
