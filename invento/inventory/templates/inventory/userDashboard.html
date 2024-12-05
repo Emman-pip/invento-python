@@ -4,8 +4,73 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'inventory/output.css' %}">
+	<style>
+		.dark {
+			background-color: black;
+			color: white;
+		}
+		
+		.disable {
+			pointer-events: none;
+		}
+
+		.off {
+			display: none;
+		}
+
+	</style>
 </head>
 <body>
-	
+<main class="flex">
+	{% include "inventory/_sideBar.html" %}
+
+	<section class="p-5 w-full flex flex-col gap-5">
+		<section class=" flex justify-between items-center">
+			<div>
+				<h1 class="text-4xl font-bold">Welcome {{ userData.username }}</h1>
+				<p>This is your personalized inventory system.</p>
+			</div>
+			<div>
+				<a href="/inventory/login/"
+					class="bg-gray-100 hover:bg-gray-200 p-5 rounded-xl border-gray-600 border">
+					Logout</a>
+			</div>
+		</section>
+
+		<section class="">
+			<div> 
+				<div class="tabs flex gap-3">
+					<div class="border border-black p-3 rounded-xl cursor-pointer disable dark" id="owned-pane" onclick="toggler()">owned inventories</div>
+					<div class="border border-black p-3 rounded-xl cursor-pointer" id="shared-pane" onclick="toggler()">shared inventories</div>
+				</div>
+				<div class="content">
+					<div class="" id="owned-content">
+						this is owned
+					</div>
+					<div class="off" id="shared-content">
+						this is not
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</section>
+</main>	
 </body>
+<script>
+function toggler() {
+  const owned = document.getElementById("owned-pane");
+  const shared = document.getElementById("shared-pane");
+  owned.classList.toggle("dark");
+  shared.classList.toggle("dark");
+  owned.classList.toggle("disable");
+  shared.classList.toggle("disable");
+  const ownedContent = document.getElementById("owned-content");
+  const sharedContent = document.getElementById("shared-content");
+  ownedContent.classList.toggle("off");
+  sharedContent.classList.toggle("off");
+}
+</script>
 </html>
