@@ -67,7 +67,6 @@ def index(request):
 def login(request):
     form = forms.loginForm()
     if request.method == "POST":
-        print("submitted")
         users = get_collection("Users")
         form = forms.loginForm(request.POST)
 
@@ -76,17 +75,13 @@ def login(request):
             # hash the password
             password = form.cleaned_data["password"]
 
-            print(username, password, sha256(password))
-
             user = users.find_one({"username": username, "password": sha256(password)})
 
             if user:
                 # return here the dashboard
-                return render(
-                    request,
-                    "inventory/login.html",
-                    {"form": form, "warning": "valid credentials"},
-                )
+                global userData
+                userData = user
+                return userDashboard(request)
 
         return render(
             request,
@@ -97,4 +92,3 @@ def login(request):
         request, "inventory/login.html", {"form": form, "warning": "no warning"}
     )
 
-    return render(request, "inventory/login.html", {"form": form, "warning": None})
