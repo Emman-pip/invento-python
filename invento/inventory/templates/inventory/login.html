@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign up</title>
+	{% load static %}
+	<style>
+		input[type="text"], input[type="password"] {
+			height: 2rem;
+			padding: 1rem;
+			width: 30rem;
+			border-radius: 100px;
+		}
+	</style>
+	<link rel="stylesheet" href="{% static 'inventory/output.css' %}">
+</head>
+<body>
+	<main class="bg-[url('media/bg.svg')] h-lvh bg-no-repeat bg-cover bg-center p-10 flex gap-4 justify-center">
+		<section class="bg-gradient-to-t w-3/5 flex items-center justify-center" >
+			<form action="" method ="post" class="flex items-center justify-center flex-col gap-5">
+				{% csrf_token %}
+				<h1 class="text-4xl text-[#5A9D8D] font-bold">LOG IN</h1>
+				{{ form }}
+				{% if warning %}
+					<i class="text-red">{{ warning }}</i>
+				{% endif %}
+				<input class="border border-[#5A9D8D] text-[#5A9D8D] font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-[#5A9D8D] hover:text-white transition-all duration-150" 
+				type="submit" value="Login">
+			</form>
+		</section>
+
+		<section class="bg-gradient-to-t from-[#3F6D62] to-[#5A9D8D] w-2/5 rounded-md justify-center items-center flex flex-col p-10">
+			<div class="flex flex-col items-center justify-center h-full">
+				<h1 class="text-4xl text-white font-bold">WELCOME</h1>
+				<p class="text-[#2D4E46]">JOIN US TODAY!</p>
+			</div>
+			<div class="h-full flex items-end">
+				<a href="/inventory/" class="border border-white text-white font-bold text-3xl w-52 text-center p-4 rounded-3xl hover:bg-white hover:text-[#5A9D8D] transition-all duration-150">Sign up</a>
+			</div>
+		</section>
+
+	<!-- white #EFFCF8 -->
+	<!--green #5A9D8D -->
+	</main>
+</body>
+</html>
