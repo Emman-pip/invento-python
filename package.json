@@ -1,0 +1,14 @@
+{
+  "name": "final-proj",
+  "version": "1.0.0",
+  "description": "A repository to store the code for the python implementation of invento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}
