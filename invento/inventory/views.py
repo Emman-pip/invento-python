@@ -1,6 +1,9 @@
+from bson.objectid import ObjectId
 from django.core.exceptions import ValidationError
+from django.core.serializers.base import models
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.core.handlers.wsgi import WSGIRequest
 
 # Create your views here.
 
@@ -9,6 +12,8 @@ from .models import get_collection
 from . import forms
 
 from .utilities import sha256
+
+global userData
 
 
 def index(request):
@@ -92,3 +97,25 @@ def login(request):
         request, "inventory/login.html", {"form": form, "warning": "no warning"}
     )
 
+
+def userDashboard(request):
+    global userData
+    inventoriesDB = get_collection("Inventories")
+    arr = list(userData["ownedInventories"])
+
+    inventoriesOwned = dict()
+
+    for inventoryId in arr:
+        inventoriesOwned[inventoryId] = inventoriesDB.find_one({"_id": inventoryId})
+
+    sharedInventoryIds = inventoriesDB.find({"sharedTo": userData["username"]})
+
+    return render(
+        request,
+        "inventory/userDashboard.html",
+        {
+            "userData": userData,
+            "inventoriesOwned": inventoriesOwned,
+            "sharedInventories": sharedInventoryIds,
+        },
+    )
